@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+ */
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware(['auth.basic'])->group(function () {
+    // Your protected routes here
+Route::post('/login', [LoginController::class, 'signin']);
+
+});
+Route::middleware(['auth.basic', 'admin'])->group(function () {
+    // Your protected routes here
+    Route::get('/specialite','SpecialiteController@getSpec');
+
+});
+//Route::get('/specialite','SpecialiteController@getSpec');
+Route::get('/available/doctors', 'FrontendController@availableDoctors');
+Route::post('/find/doctors', 'FrontendController@findDoctors');
+Route::get('/doctor/{id}', 'FrontendController@DoctorDates');
+Route::post('/booking', 'FrontendController@Booking');
+Route::get('/mybookings/{id}', 'FrontendController@UserBooking');
+Route::get('/doctors', 'DoctorController@GetAllDoctors');
+Route::get('/get/patient/{id}', 'PatientController@findPatient');
+Route::put('/update/patient/{id}', 'ProfileController@storeapi');
+Route::put('/update/avatar', 'ProfileController@updateAvatarapi');
+Route::get('/prescription/{id_appointment}/{doctor_id}', 'PrescriptionController@showapi');
+Route::get('/review/{id}/{review}', 'ProfileController@review');
+
+Route::get('/messages', 'ChatController@index');
+
+Route::post('/send-message', 'ChatController@triggerEvent');
+
