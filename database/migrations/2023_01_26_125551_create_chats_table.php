@@ -12,7 +12,6 @@ class CreateChatsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('doctor_id');
-
             $table->text('message');
             $table->timestamps();
             $table->foreign('doctor_id')->references('id')->on('users');
