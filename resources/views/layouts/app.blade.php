@@ -344,7 +344,7 @@ box-shadow: 0px 8px 10px rgb(0 0 0 / 20%);
   font-size: 11pt;
   color:#515151;
 }
-
+ 
 .discussions .discussion .message1 {
   margin: 6px 0 0 20px;
   font-family:'Montserrat', sans-serif;
