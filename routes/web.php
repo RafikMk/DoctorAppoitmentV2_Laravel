@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('messages', 'ChatsController_Web@fetchMessages');
 Route::post('messages', 'ChatsController_Web@sendMessage');
 Route::get('/n', 'ChatsController_Web@index');
+Route::get('messages/doctor/{id}', 'ChatsController_Web@GetMessageByDoctor');
 
 Route::get('/', 'FrontendController@index');
 Route::get('/home', 'HomeController@index')->name('home');

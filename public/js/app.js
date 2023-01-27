@@ -79843,6 +79843,7 @@ var app = new Vue({
       console.log(JSON.stringify(data));
     });
     this.fetchMessages();
+    this.fetchMessagesDoctor();
   },
   methods: {
     fetchMessages: function fetchMessages() {
@@ -79850,6 +79851,13 @@ var app = new Vue({
 
       axios.get('/messages').then(function (response) {
         _this2.messages = response.data;
+      });
+    },
+    fetchMessagesDoctor: function fetchMessagesDoctor() {
+      var _this3 = this;
+
+      axios.get('/messages/doctor/1').then(function (response) {
+        _this3.messages = response.data;
       });
     },
     addMessage: function addMessage(message) {

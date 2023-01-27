@@ -27,7 +27,7 @@ const app = new Vue({
         console.log(JSON.stringify(data));
         });
         this.fetchMessages();
-
+this.fetchMessagesDoctor()
     },
 
     methods: {
@@ -36,7 +36,11 @@ const app = new Vue({
                 this.messages = response.data;
             });
         },
-
+        fetchMessagesDoctor() {
+            axios.get('/messages/doctor/1').then(response => {
+                this.messages = response.data;
+            });
+        },
         addMessage(message) {
       //      this.messages.push(message);
 

@@ -29,6 +29,25 @@ public function fetchMessages()
 {
   return Chat::with('user')->get();
 }
+public function GetMessageByDoctor( $request)
+{
+ $doctor_id=$request ;
+// return $chats = Chat::where('doctor_id', $doctor_id)->with('patient','doctor')->get();
+
+     $chats = Chat::where('doctor_id', $doctor_id)->get();
+    $patientIds = [];
+foreach ($chats as $chat) {
+    array_push($patientIds, $chat->patient_id);
+}
+ $uniquePatientIds = array_unique($patientIds);
+$latestMessages = [];
+foreach ($uniquePatientIds as $patientId) {
+    $latestMessage = Chat::where('patient_id', $patientId)->with('patient')->latest()->first();
+    $latestMessages[$patientId] = $latestMessage;
+}
+
+return  $latestMessages;
+}
 
 /**
  * Persist message to database
@@ -38,7 +57,7 @@ public function fetchMessages()
  */
 public function sendMessage(Request $request)
 {
-  $user = Auth::user();
+  $doctor = Auth::user();
   $message = $request->input('message');
 
   $pusher = new Pusher(env('PUSHER_APP_KEY'), env('PUSHER_APP_SECRET'), env('PUSHER_APP_ID'), [
@@ -49,12 +68,12 @@ public function sendMessage(Request $request)
  // $user = User::findOrFail(1);
 
   $chat = new Chat();
-  $chat->user_id = $user->id;
+  $chat->doctor_id = $doctor->id;
   $chat->message = $message;
   $chat->save();
   $chat->user = $user;
   $patient_id = 2;
-  $doctor_id = 1;
+  $doctor_id = $doctor->id;
   $channel = 'doctor_' . $doctor_id;
   $event = 'patient_' . $patient_id;
   $pusher->trigger($channel, $event, $chat);
