@@ -6,7 +6,7 @@ Route::get('messages', 'ChatsController_Web@fetchMessages');
 Route::post('messages', 'ChatsController_Web@sendMessage');
 Route::get('/n', 'ChatsController_Web@index');
 Route::get('messages/doctor/{id}', 'ChatsController_Web@GetMessageByDoctor');
-
+Route::get('messages/doctor/{doctor_id}/patient/{patient_id}', 'ChatsController_Web@GetMessageByDoctor_Patient');
 Route::get('/', 'FrontendController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
@@ -14,10 +14,12 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/new-appointment/{doctor}/{date}', 'FrontendController@showAppointment')->name('show.appointment');
 
 Auth::routes();
+Route::resource('specialite', 'SpecialiteController');
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
-    Route::resource('specialite', 'SpecialiteController');
+   // Route::resource('specialite', 'SpecialiteController');
     Route::resource('doctor', 'DoctorController');
+    Route::get('/user/profile', 'ProfileController@index')->name('profile');
     Route::get('/patients', 'PatientController@index')->name('bookings.today');
     Route::get('/patients/all', 'PatientController@allBookings')->name('bookings.all');
     Route::get('/update/{id}/status', 'PatientController@updateStatus')->name('update.status');

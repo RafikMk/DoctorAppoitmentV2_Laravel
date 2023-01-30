@@ -72,3 +72,223 @@
                     </div>
                 </div>
             </header>
+            <style>
+
+        .chat {
+  width: 90%;
+  border: solid 1px #EEE;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  float:left;
+overflow-y: auto;
+height: 500px;
+box-shadow: 0px 8px 10px rgb(0 0 0 / 20%);
+
+}
+
+.messages {
+  margin-top: -5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.mine {
+  align-items: flex-end;
+}
+
+.mine .message {
+  color: white;
+  margin-left: 25%;
+  background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+.mine .message.last:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  right: -8px;
+  height: 20px;
+  width: 20px;
+  background: linear-gradient(to bottom, #00addf 0%, #0085D1 100%);
+  background-attachment: fixed;
+  border-bottom-left-radius: 15px;
+}
+
+.mine .message.last:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: -10px;
+  width: 10px;
+  height: 20px;
+  background: white;
+  border-bottom-left-radius: 10px;
+}
+
+.yours {
+  align-items: flex-start;
+}
+
+.yours .message {
+  margin-right: 25%;
+  background-color: #eee;
+  position: relative;
+}
+
+.yours .message.last:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: -7px;
+  height: 20px;
+  width: 20px;
+  background: #eee;
+  border-bottom-right-radius: 15px;
+}
+.yours .message.last:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: -10px;
+  width: 10px;
+  height: 20px;
+  background: white;
+  border-bottom-right-radius: 10px;
+}
+.discussions {
+    /* padding: 9px; */
+    width: 101%;
+    height: 533px;
+    box-shadow: 0px 8px 10px rgb(0 0 0 / 20%);
+    overflow: hidden;
+    /* background-color: #87a3ec; */
+    display: inline-block;
+}
+
+.discussions .discussion {
+  width: 100%;
+  height: 90px;
+  background-color: #FAFAFA;
+  border-bottom: solid 1px #E0E0E0;
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.discussions .search1 {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color: #E0E0E0;
+}
+
+.discussions .search1 .searchbar1 {
+  height: 40px;
+  background-color: #FFF;
+  width: 70%;
+  padding: 0 20px;
+  border-radius: 50px;
+  border: 1px solid #EEEEEE;
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.discussions .search1 .searchbar1 input {
+  margin-left: 15px;
+  height:38px;
+  width:100%;
+  border:none;
+  font-family: 'Montserrat', sans-serif;;
+}
+
+.discussions .search1 .searchbar1 *::-webkit-input-placeholder {
+    color: #E0E0E0;
+}
+.discussions .search1 .searchbar1 input *:-moz-placeholder {
+    color: #E0E0E0;
+}
+.discussions .search1 .searchbar1 input *::-moz-placeholder {
+    color: #E0E0E0;
+}
+.discussions .search1 .searchbar1 input *:-ms-input-placeholder {
+    color: #E0E0E0;
+}
+
+.discussions .message1-active {
+  width: 98.5%;
+  height: 90px;
+  background-color: #FFF;
+  border-bottom: solid 1px #E0E0E0;
+}
+
+.discussions .discussion .photo {
+    margin-left:20px;
+    display: block;
+    width: 45px;
+    height: 45px;
+    background: #E6E7ED;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.online {
+  position: relative;
+  top: 30px;
+  left: 35px;
+  width: 13px;
+  height: 13px;
+  background-color: #8BC34A;
+  border-radius: 13px;
+  border: 3px solid #FAFAFA;
+}
+
+.desc-contact {
+  height: 43px;
+  width:50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.discussions .discussion .name {
+  margin: 0 0 0 20px;
+  font-family:'Montserrat', sans-serif; 
+  font-size: 11pt;
+  color:#515151;
+}
+ 
+.discussions .discussion .message1 {
+  margin: 6px 0 0 20px;
+  font-family:'Montserrat', sans-serif;
+  font-size: 9pt;
+  color:#515151;
+}
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 90%;
+    box-shadow: 0px 8px 10px rgb(0 0 0 / 20%);
+
+}
+                </style>

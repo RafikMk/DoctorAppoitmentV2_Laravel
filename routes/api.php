@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use App\Http\Controllers\Auth\LoginController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
  */
+
+Route::post('/signup', [RegisterController::class, 'create']);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -24,10 +28,10 @@ Route::post('/login', [LoginController::class, 'signin']);
 });
 Route::middleware(['auth.basic', 'admin'])->group(function () {
     // Your protected routes here
-    Route::get('/specialite','SpecialiteController@getSpec');
+   // Route::get('/specialite','SpecialiteController@getSpec');
 
 });
-//Route::get('/specialite','SpecialiteController@getSpec');
+Route::get('/specialite','SpecialiteController@getSpec');
 Route::get('/available/doctors', 'FrontendController@availableDoctors');
 Route::post('/find/doctors', 'FrontendController@findDoctors');
 Route::get('/doctor/{id}', 'FrontendController@DoctorDates');
@@ -44,3 +48,4 @@ Route::get('/messages', 'ChatController@index');
 
 Route::post('/send-message', 'ChatController@triggerEvent');
 
+Route::get('messages/doctor/{doctor_id}/patient/{patient_id}', 'ChatsController_Web@GetMessageByDoctor_Patient');

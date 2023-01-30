@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -64,11 +65,11 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $data)
     {
-        $role = Role::whereName('Doctor')->first();
+        $role = Role::whereName('Patient')->first();
 
-        return User::create([
+        $user  =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'status' => 'online',
@@ -76,11 +77,20 @@ class RegisterController extends Controller
             'role_id' => $role->id,
             'gender' => $data['gender'],
         ]);
-     
+        $role=  Role::where('id',$user->role_id)->firstOrFail();
+
 $token = $user->createToken('auth_token')->plainTextToken;
-    return response()->json([
+  /*  return response()->json([
     'access_token' => $token,
          'token_type' => 'Bearer',
-  ]);
+  ]);*/
+  return response()->json([
+    'id' =>$user->id,
+    'username'=>$user->name,
+    'email'=>$user->email,
+    'roles'=>array($role->name),
+    'accessToken' => $token,
+    'tokenType' => 'Bearer',
+]);
     }
 }

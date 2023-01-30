@@ -16,10 +16,20 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-       if (Auth::user()->role->name == 'Admin') {
+        $user = Auth::guard('sanctum')->user();
+  //dd(  $user);    
+     //   $user =Auth::user() ;
+       // dd($request);
+     //  dd($next($request)) ;
+     /*   if (Auth::user()->role_id == 1) {
+            return $next($request);
+        }*/
+        if ($user === null ) {
+            abort(403);
+
+        }
+        if ($user->role_id == 1) {
             return $next($request);
         }
-
-        abort(403);
     }
 }
