@@ -26,6 +26,7 @@ class BasicAuth
             return response()->json([
                        'id' =>$user->id,
                        'username'=>$user->name,
+                       'image'=>$user->image,
                        'email'=>$user->email,
                        'roles'=>array($role->name),
                        'accessToken' => $token,
