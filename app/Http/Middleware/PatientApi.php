@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class PatientApi
 {
     /**
      * Handle an incoming request.
@@ -32,7 +32,7 @@ class AdminMiddleware
                 'message' => 'Invalid login details'
                            ], 401);
         }
-        if ($user->role_id == 1) {
+        if ($user->role_id == 3) {
             return $next($request);
         }
         else {

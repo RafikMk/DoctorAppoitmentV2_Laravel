@@ -68,5 +68,10 @@ class Kernel extends HttpKernel
         'patient' => \App\Http\Middleware\Patient::class,
         'auth.basic' => \App\Http\Middleware\BasicAuth::class,
         'auth:sanctum' => \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+        'adminApi' => \App\Http\Middleware\AdminMiddleware::class,
+        'PatientApi' => \App\Http\Middleware\PatientApi::class,
+
+        
+        
     ];
 }

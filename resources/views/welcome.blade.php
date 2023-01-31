@@ -9,23 +9,34 @@
 
         </div>   
         <div class="col-sm-6">
-            <h2>Create an account & Book your appointment</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+            <h2>Doctor's Appointment</h2>
+            <p> Notre page d'accueil pour l'application de gestion de rendez-vous 
+                médicaux est conçue pour offrir une expérience utilisateur intuitive 
+                et efficace. Avec une interface simple et claire, les patients peuvent 
+                facilement trouver les informations dont ils ont besoin pour prendre 
+                rendez-vous avec leur médecin. Les informations de base sur les médecins
+                 disponibles, les horaires de rendez-vous, les disponibilités et les tarifs
+                  sont clairement affichées. Les patients peuvent également gérer leurs 
+                  rendez-vous en temps réel, recevoir des notifications pour les rappels 
+                  et les annulations, et accéder à leur historique de rendez-vous. Nous avons
+                   créé cette application pour simplifier le processus de prise de rendez-vous
+                    médicaux pour les patients, tout en fournissant une solution efficace pour 
+                    les professionnels de la santé.
+
+
+
+</p>
             <div class="mt-5">
-            <a href="{{ url('/register') }}"><button class="btn btn-success">Register as Patient</button></a>
+      <!--     <find-doctors />        <a href="{{ url('/register') }}"><button class="btn btn-success">Register as Patient</button></a>
+ -->
             <a href="{{ url('/login') }}"><button class="btn btn-secondary">Login</button></a>
         </div>
         </div>
         
     </div>
     <hr>
+<!--     <find-doctors /> -->
 
-    <find-doctors />
     
 </div>      
 @endsection

@@ -26,11 +26,8 @@ Route::middleware(['auth.basic'])->group(function () {
 Route::post('/login', [LoginController::class, 'signin']);
 
 });
-Route::middleware(['auth.basic', 'admin'])->group(function () {
+Route::middleware(['auth.basic', 'PatientApi'])->group(function () {
     // Your protected routes here
-   // Route::get('/specialite','SpecialiteController@getSpec');
-
-});
 Route::get('/specialite','SpecialiteController@getSpec');
 Route::get('/available/doctors', 'FrontendController@availableDoctors');
 Route::post('/find/doctors', 'FrontendController@findDoctors');
@@ -43,9 +40,9 @@ Route::put('/update/patient/{id}', 'ProfileController@storeapi');
 Route::put('/update/avatar', 'ProfileController@updateAvatarapi');
 Route::get('/prescription/{id_appointment}/{doctor_id}', 'PrescriptionController@showapi');
 Route::get('/review/{id}/{review}', 'ProfileController@review');
-
 Route::get('/messages', 'ChatController@index');
-
 Route::post('/send-message', 'ChatController@triggerEvent');
-
 Route::get('messages/doctor/{doctor_id}/patient/{patient_id}', 'ChatsController_Web@GetMessageByDoctor_Patient');
+});
+//Route::get('/specialite','SpecialiteController@getSpec');
+
