@@ -65,7 +65,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(Request $data)
+    protected function create2(Request $data)
     {
         $role = Role::whereName('Patient')->first();
 
@@ -92,5 +92,24 @@ $token = $user->createToken('auth_token')->plainTextToken;
     'accessToken' => $token,
     'tokenType' => 'Bearer',
 ]);
+    }
+    protected function create(array $data)
+    {
+        $role = Role::whereName('Doctor')->first();
+
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'status' => 'online',
+            'password' => Hash::make($data['password']),
+            'role_id' => $role->id,
+            'gender' => $data['gender'],
+        ]);
+     
+$token = $user->createToken('auth_token')->plainTextToken;
+    return response()->json([
+    'access_token' => $token,
+         'token_type' => 'Bearer',
+  ]);
     }
 }

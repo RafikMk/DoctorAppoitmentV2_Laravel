@@ -6,24 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prescription extends Model
 {
-    /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
-     */
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'patient_id','doctor_id', 'booking_id',
+    ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
     
-    public function doctor()
-    {
+    public function patient(){
+        return $this->belongsTo(User::class, 'patient_id');
+    }
+    public function doctor(){
         return $this->belongsTo(User::class, 'doctor_id');
     }
-    public function appointment()
+    public function booking()
     {
-        return $this->belongsTo(Appointment::class, 'appointment_id');
+        return $this->belongsTo(Booking::class, 'booking_id');
     }
 }

@@ -17,9 +17,13 @@ class CreatePrescriptionsTable extends Migration
             $table->id();
             $table->string('ailment');
             $table->string('symptoms');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('doctor_id');
-            $table->unsignedInteger('appointment_id');
+            $table->unsignedBigInteger('patient_id');
+            $table->unsignedBigInteger('doctor_id');
+            $table->unsignedBigInteger('booking_id');
+
+            $table->foreign('doctor_id')->references('id')->on('users');
+            $table->foreign('patient_id')->references('id')->on('users');
+            $table->foreign('booking_id')->references('id')->on('bookings');
             $table->string('date');
             $table->text('medicine');
             $table->text('procedure');

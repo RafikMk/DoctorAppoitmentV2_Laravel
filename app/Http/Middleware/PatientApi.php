@@ -18,7 +18,7 @@ class PatientApi
     {
         $user = Auth::guard('sanctum')->user();
         
-     //   dd($user->role_id);
+      // dd($user->role_id);
 
   //dd(  $user);    
      //   $user =Auth::user() ;
@@ -29,7 +29,7 @@ class PatientApi
         }*/
         if ($user === null ) {
             return response()->json([
-                'message' => 'Invalid login details'
+                'message' => 'Invalid login details1'
                            ], 401);
         }
         if ($user->role_id == 3) {
@@ -37,7 +37,7 @@ class PatientApi
         }
         else {
             return response()->json([
-                'message' => 'Invalid login details'
+                'message' => 'Invalid login details2'
                            ], 401);
         }
     }

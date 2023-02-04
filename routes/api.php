@@ -16,7 +16,7 @@ use App\Http\Controllers\Auth\RegisterController;
 |
  */
 
-Route::post('/signup', [RegisterController::class, 'create']);
+Route::post('/signup', [RegisterController::class, 'create2']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
