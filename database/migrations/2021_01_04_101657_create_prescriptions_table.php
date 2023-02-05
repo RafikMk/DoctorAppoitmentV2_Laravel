@@ -15,20 +15,18 @@ class CreatePrescriptionsTable extends Migration
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
-            $table->string('ailment');
-            $table->string('symptoms');
-            $table->unsignedBigInteger('patient_id');
-            $table->unsignedBigInteger('doctor_id');
+            $table->string('ailment')->default('');
+            $table->string('symptoms')->default('');
+       
             $table->unsignedBigInteger('booking_id');
 
-            $table->foreign('doctor_id')->references('id')->on('users');
-            $table->foreign('patient_id')->references('id')->on('users');
+           
             $table->foreign('booking_id')->references('id')->on('bookings');
-            $table->string('date');
-            $table->text('medicine');
-            $table->text('procedure');
-            $table->text('feedback');
-            $table->string('signature');
+            $table->string('date')->default('');;
+            $table->text('medicine')->default('');;
+            $table->text('procedure')->default('');;
+            $table->text('feedback')->default('');;
+            $table->string('signature')->default('');;
             $table->timestamps();
         });
     }

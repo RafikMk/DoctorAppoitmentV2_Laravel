@@ -44,7 +44,7 @@
                     <div class="form-group">
                     <label for="name">Ailment</label>
                     <input type="text" class="form-control @error('ailment') is-invalid @enderror" id="ailment" placeholder="ailment" name="ailment" value="{{ old('ailment') }}">
-                    @error('name')
+                    @error('ailment')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -101,13 +101,13 @@
             </div>
 
             <div class="row">
-                 <div class="col-md-4">
+                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Patient</label>
-                    <select name="user_id" class="form-control @error('user_id') is-invalid @enderror" id="user_id" value="{{ old('user_id') }}">
-                        <option value="">Select user</option>
-                        @foreach (App\User::where('role_id', 3)->get() as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    <label for="">Bookings Of Patient</label>
+                    <select name="booking_id" class="form-control @error('booking_id') is-invalid @enderror" id="booking_id" value="{{ old('booking_id') }}">
+                        <option value="">Select Booking of user</option>
+                        @foreach (App\Booking::all() as $user)
+                            <option value="{{ $user->id }}">{{ $user->user->name }}</option>
                         @endforeach
                     </select>
                     @error('specialite')
@@ -118,24 +118,9 @@
                 </div>
            </div>
 
-           <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="">Appointment</label>
-                    <select name="appointment_id" class="form-control @error('appointment_id') is-invalid @enderror" id="appointment_id" value="{{ old('appointment_id') }}">
-                        <option value="appointment_id">Select user</option>
-                        @foreach (App\Appointment::all() as $appointment)
-                            <option value="{{ $appointment->id }}">{{ $appointment->date }}</option>
-                        @endforeach
-                    </select>
-                    @error('specialite')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-           </div>  
+        
            
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="form-group">
     <label for="date">Date</label>
     <input type="date" name="date" class="form-control @error('date') is-invalid @enderror" id="date" value="{{ old('date') }}">

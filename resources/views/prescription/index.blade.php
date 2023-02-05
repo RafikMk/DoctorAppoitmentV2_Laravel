@@ -38,14 +38,14 @@
                            @forelse ($bookings as $booking)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img src="/profile/{{ $booking->user->image }}" width="80" alt="client photo" style="border-radius: 100%"></td>
-                                    <td>{{ $booking->date }}</td>
-                                    <td>{{ $booking->user->name }}</td>
-                                    <td>{{ $booking->user->email }}</td>
-                                    <td>{{ $booking->user->phone_number }}</td>
-                                    <td>{{ $booking->user->gender }}</td>
-                                    <td>{{ $booking->time }}</td>
-                                    <td>{{ $booking->doctor->name }}</td>
+                                    <td><img src="/profile/{{ $booking->booking->user->image }}" width="80" alt="client photo" style="border-radius: 100%"></td>
+                                    <td>{{ $booking->booking->date }}</td>
+                                    <td>{{ $booking->booking->user->name }}</td>
+                                    <td>{{ $booking->booking->user->email }}</td>
+                                    <td>{{ $booking->booking->user->phone_number }}</td>
+                                    <td>{{ $booking->booking->user->gender }}</td>
+                                    <td>{{ $booking->booking->time }}</td>
+                                    <td>{{ $booking->booking->doctor->name }}</td>
                                     <td>
                                         @if ($booking->status == 1)
                                             <button class="btn btn-success">
@@ -56,14 +56,12 @@
                                     <td>
                                         <!-- Button trigger modal -->
                                         @if (!App\Prescription::where('date', date('Y-m-d'))
-                                        ->where('doctor_id', auth()->id())
-                                        ->where('user_id', $booking->user->id)
                                         ->exists())
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prescriptionModal{{ $booking->user_id }}">
                                                 Make Prescription
                                             </button>
                                         @else
-                                            <a href="{{ route('show.prescription', [$booking->user_id, $booking->date]) }}" class="btn btn-secondary">
+                                            <a href="{{ route('show.prescription', [$booking->id] ) }}" class="btn btn-secondary">
                                                 View Prescription
                                             </a>
                                         @endif

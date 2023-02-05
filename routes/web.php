@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
     Route::get('prescription/create', 'PrescriptionController@create')->name('prescription.create');
 
     Route::get('prescription/all', 'PrescriptionController@allPresriptions')->name('prescription.all');
-    Route::get('/prescription/{userId}/{date}', 'PrescriptionController@show')->name('show.prescription');
+    Route::get('/prescription/{id}', 'PrescriptionController@show')->name('show.prescription');
     Route::post('/prescription/store', 'PrescriptionController@store')->name('store.prescription');
     Route::get('/user/profile', 'ProfileController@index')->name('profile');
     Route::post('/profile/update', 'ProfileController@store')->name('store.profile');

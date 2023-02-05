@@ -6,23 +6,21 @@ use App\Booking;
 use App\Prescription;
 use Illuminate\Http\Request;
 use App\User;
+use Carbon\Carbon;
 
 class PrescriptionController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::latest()
-            ->where('date', date('Y-m-d'))
-            ->where('doctor_id', auth()->id())
-            ->where('status', 1)
+        $bookings = Prescription::latest()
+        ->where('date', Carbon::today()->format('Y-m-d'))
             ->get();
-
         return view('prescription.index', compact('bookings'));
     }
 
     public function allPresriptions()
     {
-        $prescriptions = Prescription::with(['user', 'doctor'])->get();
+        $prescriptions = Prescription::with(['user', 'booking'])->get();
         return view('prescription.all', compact('prescriptions'));
     }
 
@@ -41,25 +39,24 @@ class PrescriptionController extends Controller
 
     public function store(Request $request)
     {
-    //  dd($request->symptoms);
         $data = $request->all();
+    //  dd($request->ailment);
+
      //  $data['medicine'] = implode(',', $request->user);
-     $data['doctor_id']  = auth()->id();
      $name = User::findOrFail(auth()->id());
      $data['medicine']  = $name->name;
+    
+  //  dd( $data) ;
 
-
-        Prescription::create($data);
+       Prescription::create($data);
 
         return redirect()->back()->with('message', 'Prescription created successfully!');
     }
 
-    public function show($userId, $date)
+    public function show($id)
     {
-        $prescription = Prescription::where('user_id', $userId)
-            ->where('date', $date)
+        $prescription = Prescription::where('id', $id)
             ->first();
-
         return view('prescription.show', compact('prescription'));
     }
 

@@ -31,16 +31,16 @@
                            @forelse ($prescriptions as $prescription)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img src="/profile/{{ $prescription->user->image }}" width="80" alt="client photo" style="border-radius: 100%"></td>
+                                    <td><img src="/profile/{{ $prescription->booking->user->image }}" width="80" alt="client photo" style="border-radius: 100%"></td>
                                     <td>{{ $prescription->date }}</td>
-                                    <td>{{ $prescription->user->name }}</td>
-                                    <td>{{ $prescription->user->email }}</td>
-                                    <td>{{ $prescription->user->phone_number }}</td>
-                                    <td>{{ $prescription->user->gender }}</td>
+                                    <td>{{ $prescription->booking->user->name }}</td>
+                                    <td>{{ $prescription->booking->user->email }}</td>
+                                    <td>{{ $prescription->booking->user->phone_number }}</td>
+                                    <td>{{ $prescription->booking->user->gender }}</td>
                                     {{-- <td>{{ $prescription->time }}</td> --}}
-                                    <td>{{ $prescription->doctor->name }}</td>
+                                    <td>{{ $prescription->booking->doctor->name }}</td>
                                     <td>
-                                        <a href="{{ route('show.prescription', [$prescription->user_id, $prescription->date]) }}" class="btn btn-secondary">
+                                        <a href="{{ route('show.prescription', [$prescription->id] ) }}" class="btn btn-secondary">
                                             View Prescription
                                         </a>
                                     </td>
