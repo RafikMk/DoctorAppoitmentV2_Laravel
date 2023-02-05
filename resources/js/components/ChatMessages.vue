@@ -3,7 +3,7 @@
   
    <ul class="list-unstyled" v-for="(message, index) in messages" :key="message.id">
           <li class="d-flex justify-content-between mb-4">
-            <img v-if="message.envoye_par === message.doctor_id "  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+            <img v-if="message.envoye_par === message.doctor_id "   :src="'http://204.48.29.155:7080/profile/'+message.doctor.image"  alt="avatar"
               class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
             <div class="card" :class="[message.envoye_par === message.doctor_id ? 'card_doctor' : '']">
               <div class="card-header d-flex justify-content-between p-3">
@@ -16,7 +16,8 @@
                 </p>
               </div>
             </div>
-            <img v-if="message.envoye_par === message.patient_id " src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+
+            <img v-if="message.envoye_par === message.patient_id " :src="'http://204.48.29.155:7080/profile/'+message.patient.image" alt="avatar"
               class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
           </li>
 

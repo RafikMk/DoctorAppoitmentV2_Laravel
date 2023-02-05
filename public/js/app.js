@@ -1983,6 +1983,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['messages'],
   computed: {
@@ -2227,6 +2228,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   computed: {},
@@ -2271,12 +2273,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
         _this.listMessage = response.data; //       console.log(listMessage)
       });
-    },
-    change: function change() {
-      this.$emit('change', {
-        //     user: this.user,
-        newId: 1
-      }); // this.newMessage = ''
     }
   }
 });
@@ -65021,7 +65017,7 @@ var render = function() {
                   "rounded-circle d-flex align-self-start me-3 shadow-1-strong",
                 attrs: {
                   src:
-                    "https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp",
+                    "http://204.48.29.155:7080/profile/" + message.doctor.image,
                   alt: "avatar",
                   width: "60"
                 }
@@ -65078,7 +65074,8 @@ var render = function() {
                   "rounded-circle d-flex align-self-start me-3 shadow-1-strong",
                 attrs: {
                   src:
-                    "https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp",
+                    "http://204.48.29.155:7080/profile/" +
+                    message.patient.image,
                   alt: "avatar",
                   width: "60"
                 }
@@ -65368,11 +65365,11 @@ var render = function() {
             }
           },
           [
-            _c("div", {
+            _c("img", {
               staticClass: "photo",
-              staticStyle: {
-                "background-image":
-                  "url(https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80)"
+              attrs: {
+                src:
+                  "http://204.48.29.155:7080/profile/" + message.patient.image
               }
             }),
             _vm._v(" "),
@@ -65391,19 +65388,7 @@ var render = function() {
             ])
           ]
         )
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.change()
-            }
-          }
-        },
-        [_vm._v("Change Id")]
-      )
+      })
     ],
     2
   )
@@ -80714,8 +80699,8 @@ console.log(JSON.stringify(data));
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/rafik/Downloads/DoctorsAppointmentLaravel--Rafik/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/rafik/Downloads/DoctorsAppointmentLaravel--Rafik/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /root/rafik/DoctorAppoitmentV2_Laravel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /root/rafik/DoctorAppoitmentV2_Laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

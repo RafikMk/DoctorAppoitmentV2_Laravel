@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 Route::get('messages', 'ChatsController_Web@fetchMessages');
 Route::post('messages', 'ChatsController_Web@sendMessage');
-Route::get('/n', 'ChatsController_Web@index');
+Route::get('/chats', 'ChatsController_Web@index')->name('chats');
 Route::get('messages/doctor/{id}', 'ChatsController_Web@GetMessageByDoctor');
 Route::get('messages/doctor/{doctor_id}/patient/{patient_id}', 'ChatsController_Web@GetMessageByDoctor_Patient');
 Route::get('/', 'FrontendController@index');

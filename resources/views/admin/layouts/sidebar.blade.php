@@ -65,6 +65,14 @@
                         </div>
                     </div>
                     @endif
+                    @if (auth()->check() && auth()->user()->role->name == 'Doctor')
+                    <div class="nav-item has-sub">
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Messages</span> <span class="badge badge-danger"></span></a>
+                        <div class="submenu-content">
+                            <a href="{{ route('chats') }}" class="menu-item">All</a>
+                        </div>
+                    </div>
+                    @endif
                     <div class="nav-item has-sub">
                         <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Update profile </span> <span class="badge badge-danger"></span></a>
                         <div class="submenu-content">

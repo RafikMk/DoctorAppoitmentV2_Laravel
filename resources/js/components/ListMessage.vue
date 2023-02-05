@@ -7,15 +7,16 @@
           </div>
         </div>
         <div class="discussion" v-for="(message, index) in listMessage" :key="message.id"  @click="displayconversation(message.patient_id)">
-  <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80);">
-  </div>
+          <img class="photo"  :src="'http://204.48.29.155:7080/profile/'+message.patient.image" />
+
   <div class="desc-contact">
+
     <p class="name">{{message.patient.name}}</p>
     <p class="message1">{{message.message}}</p>
+
   </div>
   <div class="timer">{{ getTimeDiff(message.created_at) }}</div>
 </div>
-<button @click="change()">Change Id</button>
 
 
       </section>
@@ -73,14 +74,7 @@
 
             });
         },
-        change() {
-                this.$emit('change', {
-               //     user: this.user,
-                    newId: 1
-                });
-
-               // this.newMessage = ''
-            }
+     
       }
   };
   </script>
