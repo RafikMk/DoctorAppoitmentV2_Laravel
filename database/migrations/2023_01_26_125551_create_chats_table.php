@@ -18,7 +18,7 @@ class CreateChatsTable extends Migration
               $table->foreign('doctor_id')->references('id')->on('users');
             $table->foreign('patient_id')->references('id')->on('users');
             
-            
+           
 
         });
     }
