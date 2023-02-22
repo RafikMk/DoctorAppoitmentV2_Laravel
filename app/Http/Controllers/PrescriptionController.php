@@ -60,10 +60,9 @@ class PrescriptionController extends Controller
         return view('prescription.show', compact('prescription'));
     }
 
-    public function showapi($appointment_id,$doctor_id)
+    public function showapi($booking_id)
 {
-    $prescription = Prescription::where('user_id', $appointment_id)
-    ->where('doctor_id', $doctor_id)
+    $prescription = Prescription::where('booking_id', $booking_id)
     ->get();      //  dd($appointment_id);
 
     return response()->json([
@@ -72,3 +71,4 @@ class PrescriptionController extends Controller
 }
 
 }
+&
