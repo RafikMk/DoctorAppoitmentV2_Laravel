@@ -16,7 +16,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointments = Appointment::latest()
-            ->where('user_id', auth()->id())
+            ->where('doctor_id', auth()->id())
             ->get();
 
         return view('admin.appointment.index', compact('appointments'));
@@ -40,13 +40,16 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
+
+     //   unique est une règle de validation  permet de vérifier que la valeur d'un champ est unique dans une colonne de table spécifiée.
+
+
         $this->validate($request, [
-            'date' => 'required|unique:appointments,date,NULL,id,user_id,' . auth()->id(),
+            'date' => 'required|unique:appointments,date,NULL,id,doctor_id,' . auth()->id(),
             'time' => 'required',
         ]);
-
         $appointment = Appointment::create([
-            'user_id' => auth()->id(),
+            'doctor_id' => auth()->id(),
             'date' => date('Y-m-d', strtotime($request->date)),
         ]);
 
@@ -110,7 +113,7 @@ class AppointmentController extends Controller
         $date = $request->date;
 
         $appointment = Appointment::where('date', $date)
-            ->where('user_id', auth()->id())
+            ->where('doctor_id', auth()->id())
             ->first();
 
         if (!$appointment) {

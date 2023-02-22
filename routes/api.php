@@ -38,7 +38,7 @@ Route::get('/doctors', 'DoctorController@GetAllDoctors');
 Route::get('/get/patient/{id}', 'PatientController@findPatient');
 Route::put('/update/patient/{id}', 'ProfileController@storeapi');
 Route::put('/update/avatar', 'ProfileController@updateAvatarapi');
-Route::get('/prescription/{id_appointment}/{doctor_id}', 'PrescriptionController@showapi');
+Route::get('/prescription/{booking_id}', 'PrescriptionController@showapi');
 Route::get('/review/{id}/{review}', 'ProfileController@review');
 Route::get('/messages', 'ChatController@index');
 Route::post('/send-message', 'ChatController@triggerEvent');

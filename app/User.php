@@ -39,11 +39,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role()
+    /*public function role()
     {
         return $this->hasOne(Role::class, 'id', 'role_id');
+    }*/
+//  belongsTo pour définir que chaque utilisateur appartient à un seul rôle
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
-
+    public function specialite()
+    {
+        return $this->belongsTo(Specialite::class, 'specialite', 'specialite');
+    }
+    
     public function userAvatar($request)
     {
         $image = $request->file('image');

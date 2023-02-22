@@ -35,7 +35,7 @@ class FrontendController extends Controller
 
     public function DoctorDates(int $id)
     {
-        $appointments = Appointment::where('user_id', $id)->get();
+        $appointments = Appointment::where('doctor_id', $id)->get();
         $appointments->map(function($appointment) {
             $appointment->times = Time::where('appointment_id', $appointment->id)->where('status', 0)->get();
         });

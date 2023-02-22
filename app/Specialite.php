@@ -12,4 +12,8 @@ class Specialite extends Model
      * @var array
      */
     protected $guarded = ['id'];
+    public function users()
+    {
+        return $this->hasMany(User::class, 'specialite', 'specialite');
+    }
 }

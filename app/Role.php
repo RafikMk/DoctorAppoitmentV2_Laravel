@@ -12,4 +12,9 @@ class Role extends Model
      * @var array
      */
     protected $guarded = ['id'];
+    // hasMany dans la classe Role pour définir que chaque rôle peut appartenir à plusieurs utilisateurs.
+    public function users()
+    {
+        return $this->hasMany(User::class, 'role_id', 'id');
+    }
 }

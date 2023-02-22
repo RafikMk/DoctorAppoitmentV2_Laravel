@@ -71,4 +71,3 @@ class PrescriptionController extends Controller
 }
 
 }
-&

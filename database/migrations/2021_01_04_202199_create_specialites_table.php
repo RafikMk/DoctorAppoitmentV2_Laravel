@@ -13,13 +13,13 @@ class CreateSpecialitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('specialites', function (Blueprint $table) {
+    /*    Schema::create('specialites', function (Blueprint $table) {
             $table->id();
             $table->string('specialite');
             $table->string('color');
             $table->string('image')->nullable();
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
