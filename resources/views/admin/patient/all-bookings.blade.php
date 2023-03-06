@@ -11,7 +11,7 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <h2>{{ __('Appointments/Bookings') }}
+                    <h2>{{ __('Bookings') }}
                         <sub class="badge badge-info">{{ $bookings->count() }}</sub>
                     </h2>
                 </div>
@@ -48,13 +48,13 @@
                                         @if ($booking->status == 0)
                                             <a href="{{ route('update.status', $booking->id) }}">
                                                 <button class="btn btn-primary">
-                                                    Pending
+                                                en attente
                                                 </button>
                                             </a> 
                                         @else
                                             <a href="{{ route('update.status', $booking->id) }}">
                                                 <button class="btn btn-success">
-                                                    Visited
+                                                    Terminer
                                                 </button>
                                             </a>
                                             

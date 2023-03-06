@@ -135,12 +135,18 @@ class AppointmentController extends Controller
         $appointment = Time::where('appointment_id', $appointmentId)
             ->delete();
 
-        foreach ($request->time as $time) {
-            Time::create([
-                'appointment_id' => $appointmentId,
-                'time' => $time,
-            ]);
-        }
+            try {
+                foreach ($request->time as $time) {
+                    Time::create([
+                        'appointment_id' => $appointmentId,
+                        'time' => $time,
+                    ]);
+                }
+            } catch (\Exception $e) {
+                // Gérer l'exception ici, par exemple en enregistrant un message d'erreur dans un fichier de journalisation
+                error_log('Une erreur s\'est produite lors de la création des heures de rendez-vous : ' . $e->getMessage());
+            }
+            
 
         return redirect()->route('appointment.index')->with('message', 'Appointment time updated');
     }

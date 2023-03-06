@@ -11,7 +11,7 @@
                 <i class="ik ik-command bg-blue"></i>
                 <div class="d-inline">
                     <h5>Doctors</h5>
-                    <span>Appoinment time</span>
+                    <span>Calendrier</span>
                     
                 </div>
             </div>
@@ -23,7 +23,7 @@
                     <a href="../index.html"><i class="ik ik-home"></i></a>
                 </li>
                 <li class="breadcrumb-item"><a href="#">Doctor</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Appointment</li>
+                <li class="breadcrumb-item active" aria-current="page">Calendrier</li>
             </ol>
         </nav>
     </div>
@@ -210,7 +210,7 @@
 
         </form>
     @else
-        <h3>Your Appointments List <span class="badge badge-info">{{ $appointments->count() }}</span></h3>
+        <h3>Les date disponibles <span class="badge badge-info">{{ $appointments->count() }}</span></h3>
         <table class="table table-striped">
             <thead>
                 <tr>

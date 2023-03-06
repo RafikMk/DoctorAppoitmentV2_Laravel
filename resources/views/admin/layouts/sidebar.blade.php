@@ -38,7 +38,7 @@
                     @endif
                     @if (auth()->check() && auth()->user()->role->name == 'Doctor')
                     <div class="nav-item has-sub">
-                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Appointments</span> <span class="badge badge-danger"></span></a>
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Calendrier</span> <span class="badge badge-danger"></span></a>
                         <div class="submenu-content">
                             <a href="{{ route('appointment.create') }}" class="menu-item">Create</a>
                             <a href="{{ route('appointment.index') }}" class="menu-item">View</a>
@@ -60,7 +60,9 @@
                     <div class="nav-item has-sub">
                         <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Patient Bookings</span> <span class="badge badge-danger"></span></a>
                         <div class="submenu-content">
-                            <a href="{{ route('bookings.today') }}" class="menu-item">Today</a>
+                            <!--                            <a href="{{ route('bookings.today') }}" class="menu-item">Today</a>
+ -->
+
                             <a href="{{ route('bookings.all') }}" class="menu-item">All</a>
                         </div>
                     </div>
